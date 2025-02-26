@@ -84,14 +84,18 @@ export default function Home() {
             </a>
             <Button 
               variant="ghost" 
-              size="sm" 
-              className="text-xs text-muted-foreground hover:text-foreground text-crisp"
+              size="icon" 
+              className="rounded-full hover:bg-primary/10"
               onClick={() => {
-                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.toggle('dark');
               }}
             >
-              <SunMoonIcon className="h-4 w-4 mr-1" />
-              Theme
+              {document.documentElement.classList.contains('dark') ? (
+                <SunIcon className="h-4 w-4" />
+              ) : (
+                <MoonIcon className="h-4 w-4" />
+              )}
+              <span className="sr-only">Toggle theme</span>
             </Button>
           </div>
         </div>
@@ -109,7 +113,7 @@ export default function Home() {
         <div className="w-full max-w-md mx-auto z-10">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80 text-crisp">
-              Tahajjud Prayer Time
+              Tahajjud Time
             </h1>
             {selectedCityId && (
               <Button 
@@ -237,7 +241,7 @@ function MoonStarIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function SunMoonIcon(props: React.SVGProps<SVGSVGElement>) {
+function SunIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -252,8 +256,33 @@ function SunMoonIcon(props: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <circle cx="12" cy="12" r="4" />
-      <path d="M12 8a2 2 0 1 0 4 0 4 4 0 0 1-4 0" />
-      <path d="M12 16a2 2 0 1 1-4 0 4 4 0 0 0 4 0" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </svg>
+  );
+}
+
+function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
     </svg>
   );
 }
