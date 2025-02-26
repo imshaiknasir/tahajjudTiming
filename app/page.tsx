@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { CitySelector } from '@/components/CitySelector';
 import { PrayerTimesDisplay } from '@/components/PrayerTimesDisplay';
@@ -23,7 +23,7 @@ export default function Home() {
     ? indianCities.find(city => city.id === selectedCityId) 
     : null;
 
-  const fetchTimes = async () => {
+  const fetchTimes = useCallback(async () => {
     if (!selectedCity) return;
     
     setIsLoading(true);
@@ -38,13 +38,13 @@ export default function Home() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [selectedCity]);
 
   useEffect(() => {
     if (selectedCity && isMounted) {
       fetchTimes();
     }
-  }, [selectedCity, isMounted]);
+  }, [selectedCity, isMounted, fetchTimes]);
 
   const handleCitySelect = (cityId: string) => {
     setSelectedCityId(cityId);

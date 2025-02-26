@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { parseISO, format, addMinutes, subMinutes } from 'date-fns';
+import { format, subMinutes } from 'date-fns';
 import { ApiResponse, PrayerTimes } from './types';
 
 // Function to convert time string (HH:MM) to Date object
@@ -19,7 +19,7 @@ export const formatTimeString = (date: Date): string => {
 // Calculate the last third of the night
 export const calculateTahajjudTime = (fajrTime: string, maghribTime: string): { start: string; end: string } => {
   const today = new Date();
-  let fajrDate = timeStringToDate(fajrTime, today);
+  const fajrDate = timeStringToDate(fajrTime, today);
   let maghribDate = timeStringToDate(maghribTime, today);
   
   // If maghrib is after fajr on the same day, it means maghrib is from previous day
