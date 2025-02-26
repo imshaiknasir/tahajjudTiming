@@ -43,7 +43,7 @@ export function PrayerTimesDisplay({ prayerTimes, isLoading, cityName }: PrayerT
       
       <CardHeader className="relative z-10 pb-2">
         <CardTitle className="text-center text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80 text-crisp">
-          Tahajjud Prayer Time
+          Tahajjud Time
         </CardTitle>
         {formattedDate && (
           <p className="text-center text-muted-foreground font-medium mt-1 text-crisp">
