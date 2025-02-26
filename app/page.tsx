@@ -14,9 +14,14 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
 
   useEffect(() => {
     setIsMounted(true);
+    // Check initial theme when component mounts
+    if (typeof document !== 'undefined') {
+      setIsDarkTheme(document.documentElement.classList.contains('dark'));
+    }
   }, []);
 
   const selectedCity = selectedCityId 
@@ -87,10 +92,11 @@ export default function Home() {
               size="icon" 
               className="rounded-full hover:bg-primary/10"
               onClick={() => {
-                document.documentElement.classList.toggle('dark');
+                const newTheme = document.documentElement.classList.toggle('dark');
+                setIsDarkTheme(newTheme);
               }}
             >
-              {document.documentElement.classList.contains('dark') ? (
+              {isDarkTheme ? (
                 <SunIcon className="h-4 w-4" />
               ) : (
                 <MoonIcon className="h-4 w-4" />
