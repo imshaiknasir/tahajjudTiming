@@ -87,7 +87,7 @@ export default function Home() {
               size="icon" 
               className="rounded-full hover:bg-primary/10"
               onClick={() => {
-                const isDark = document.documentElement.classList.toggle('dark');
+                document.documentElement.classList.toggle('dark');
               }}
             >
               {document.documentElement.classList.contains('dark') ? (
