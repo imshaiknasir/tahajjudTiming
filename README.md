@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tahajjud Prayer Time Calculator
+
+A web application that calculates the optimal time for Tahajjud prayer based on user location in India.
+
+## Features
+
+- **Location Selection**: Choose your city from a list of major Indian cities
+- **Automatic Calculation**: Automatically calculates Tahajjud prayer time based on the last third of the night
+- **Persistent Settings**: Remembers your selected city using browser storage
+- **Real-time Updates**: Refresh button to update prayer times for the current date
+- **Responsive Design**: Works on mobile, tablet, and desktop devices
+
+## How It Works
+
+The application calculates Tahajjud prayer time using the following logic:
+
+1. Fetches Maghrib (sunset) and Fajr (dawn) prayer times for the selected location
+2. Calculates the total night duration between Maghrib and Fajr
+3. Divides the night into thirds
+4. Identifies the last third of the night as the optimal time for Tahajjud prayer
+
+## Technologies Used
+
+- **Next.js**: React framework for building the application
+- **TypeScript**: For type-safe code
+- **Tailwind CSS**: For styling
+- **shadcn/ui**: For UI components
+- **date-fns**: For date manipulation
+- **Aladhan API**: For fetching accurate prayer times
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18.17 or later
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/tahajjud-timing.git
+cd tahajjud-timing
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This application can be easily deployed to Vercel:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install -g vercel
+vercel
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
